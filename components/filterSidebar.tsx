@@ -1,6 +1,8 @@
 import React from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './ui/accordion'
 import { filterData } from '@/lib/filterData'
+import { RadioGroup, RadioGroupItem } from './ui/radio-group'
+import { Label } from './ui/label'
 
 const FilterSidebar = () => {
   return (
@@ -13,16 +15,20 @@ const FilterSidebar = () => {
         return <AccordionItem key={index} value={`${index}`}>
         <AccordionTrigger>{data.name}</AccordionTrigger>
         <AccordionContent>
-         {data.subCategory.map((category:any,ind:number)=>{
+
+        <RadioGroup >
+
+        {data.subCategory.map((category:any,ind:number)=>{
           
-          return <div key={ind} className='flex gap-2'>
-             <input
+          return <div key={ind}  className="flex items-center space-x-2">
+        <RadioGroupItem value={category.value} id={`${ind+index}`} />
+        <Label htmlFor={`${ind+index}`}>{category.name}</Label>
+      </div>
              
-             className="h-4 w-4"
-             type='radio' name={`${index}`} value={category.value} id={`${ind+index}`}/> <label htmlFor={`${ind+index}`}>{category.name}</label>
-          </div>
          })
          }
+     
+    </RadioGroup>
         </AccordionContent>
       </AccordionItem>
       })}

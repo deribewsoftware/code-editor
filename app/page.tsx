@@ -9,6 +9,7 @@ import Projects from "@/components/smanubeer/projects";
 import { useEffect, useState } from "react";
 import SearchComponent from "@/components/search";
 import FilterSidebar from "@/components/filterSidebar";
+import FilterCourseCard from "@/components/filterCourseCard";
 
 
 
@@ -47,10 +48,7 @@ setCourseData(response.data);
         <p>{course.code}</p>
       </div>:
 
-        <div key={index} className="p-4 m-4 bg-slate-100  h-[200px] border border-slate-300 rounded-lg">
-          <h1 className="text-lg font-medium leading-6 ">{course.name}</h1>
-          <p>{course.code}</p>
-        </div>}</>
+        <FilterCourseCard/>}</>
       })}
     </div>
    
